@@ -9,22 +9,22 @@
     <body>
         <input type="text" id="text">
         <input type="submit" value="Submit" id="submit">
-        
+
         <p id="para"></p>
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>
             {
                 document.getElementById("submit").addEventListener("click",Click);
                 var newString="";
                 var words = [];
-                
-                function Click(e){                    
+
+                function Click(e){
                     var string=document.getElementById("text").value;
                     words=string.split(" ");
-                    
+
                     newString="";
-                    
+
                     for(var i=0;i<words.length;i++){
 
                         var j=$.ajax({
@@ -32,24 +32,27 @@
                             url: 'http://words.bighugelabs.com/api/2/0083cd9564ee4a75c43de2d4689b0bc1/'+words[i]+'/json',
                             data: null,
                             success:jsonLoaded
-                        });                        
-                        
+                        });
+
                     }
-                    
+
                 }
-                
+
                 function jsonLoaded(e){
-                    
+
                     debugger;
-                    
-                    if(e.noun.syn.length!=0)
-                    newString.concat(e.noun.syn[0]);
-                    
-                    document.getElementById("para").innerHtml="newString";
-                    
+
+                    if(e.noun.syn != undefined) {
+                      for (let i = 0; i < e.noun.syn.length; i++) {
+                        newString += e.noun.syn[i] + " ";
+                      }
+                    }
+
+                    document.getElementById("para").innerHTML = newString;
+
                 }
             }
         </script>
-        
+
     </body>
 </html>
