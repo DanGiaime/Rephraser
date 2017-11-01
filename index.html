@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <style>
+            input{
+                width:50%;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" id="text">
+        <input type="submit" value="Submit" id="submit">
+        
+        <p id="para"></p>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+            {
+                document.getElementById("submit").addEventListener("click",Click);
+                var newString="";
+                var words = [];
+                
+                function Click(e){                    
+                    var string=document.getElementById("text").value;
+                    words=string.split(" ");
+                    
+                    newString="";
+                    
+                    for(var i=0;i<words.length;i++){
+
+                        var j=$.ajax({
+                            dataType:"json",
+                            url: 'http://words.bighugelabs.com/api/2/0083cd9564ee4a75c43de2d4689b0bc1/'+words[i]+'/json',
+                            data: null,
+                            success:jsonLoaded
+                        });                        
+                        
+                    }
+                    
+                }
+                
+                function jsonLoaded(e){
+                    
+                    debugger;
+                    
+                    if(e.noun.syn.length!=0)
+                    newString.concat(e.noun.syn[0]);
+                    
+                    document.getElementById("para").innerHtml="newString";
+                    
+                }
+            }
+        </script>
+        
+    </body>
+</html>
