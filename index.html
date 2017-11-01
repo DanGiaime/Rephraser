@@ -18,6 +18,8 @@
                 document.getElementById("submit").addEventListener("click",Click);
                 var newString="";
                 var words = [];
+                
+                var currentWord="";
 
                 function Click(e){
                     var string=document.getElementById("text").value;
@@ -27,11 +29,16 @@
 
                     for(var i=0;i<words.length;i++){
 
+                        currentWord=words[i];
+                        
+                        debugger;
+                        
                         var j=$.ajax({
                             dataType:"json",
                             url: 'http://words.bighugelabs.com/api/2/0083cd9564ee4a75c43de2d4689b0bc1/'+words[i]+'/json',
                             data: null,
-                            success:jsonLoaded
+                            success:jsonLoaded,
+                            async: false
                         });
 
                     }
@@ -40,16 +47,27 @@
 
                 function jsonLoaded(e){
 
-                    debugger;
+                    //debugger;
+                    
+                    let options=[];
 
-                    if(e.noun.syn != undefined) {
+                    if(e.noun!=undefined && e.noun.syn != undefined) {
                       for (let i = 0; i < e.noun.syn.length; i++) {
-                        newString += e.noun.syn[i] + " ";
+                        options[i]=(e.noun.syn[i]);
                       }
                     }
 
+                    if(options.length!=0&&currentWord!="is")
+                        newString += options[/*Math.ceil(Math.random()*options.length)*/0] + " ";
+                    else
+                        {
+                            newString += currentWord+" ";
+                        }
+                    
                     document.getElementById("para").innerHTML = newString;
 
+                    
+                    
                 }
             }
         </script>
