@@ -1,16 +1,12 @@
 <html>
     <head>
-        <style>
-            input{
-                width:50%;
-            }
-        </style>
+        <link  rel="stylesheet" href="theme.css">
     </head>
     <body>
-        <input type="text" id="text">
+        <textarea type="text" id="text"></textarea>
         <input type="submit" value="Submit" id="submit">
 
-        <p id="para"></p>
+        <div id="buttonBox"></div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>
@@ -40,7 +36,7 @@
 
                 function makeButton(word) {
                   let newButton = document.createElement("button");
-                  document.getElementById("para").appendChild(newButton);
+                  document.getElementById("buttonBox").appendChild(newButton);
                   newButton.innerHTML = word;
                   newButton.text = word;
                   newButton.onclick = makeCall;

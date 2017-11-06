@@ -1,0 +1,36 @@
+html {
+     background-color:#4040a1;
+}
+
+body {
+    background-color: #36486b;
+    text-align: center;
+    padding:7.5%;
+    padding-top: 2.5%;
+    border-color: black;
+    border-width: 2px;
+}
+
+#buttonBox{
+    background-color: #fefbd8;
+    min-width: 50%;
+    min-height: 1em;
+    font-size: 3em;
+    padding: 5%;
+    text-align: center;
+}
+
+#text {
+    margin-bottom: 2.5%;
+    min-height:4em;
+}
+
+#submit {
+    position: relative;
+    bottom: 2em;
+}
+
+button {
+    font-size: 2em;
+    background-color: #618685;
+}
