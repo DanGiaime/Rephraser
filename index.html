@@ -87,7 +87,7 @@
                 function makeCall(event) {
                     let jdata = $.ajax({
                       dataType:"json",
-                      url: 'http://words.bighugelabs.com/api/2/0083cd9564ee4a75c43de2d4689b0bc1/'+this.text+'/json',
+                      url: 'https://words.bighugelabs.com/api/2/0083cd9564ee4a75c43de2d4689b0bc1/'+this.text+'/json',
                       data: null,
                       success: function(e) {
                         jsonLoaded(event.target, e);
