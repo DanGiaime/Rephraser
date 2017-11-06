@@ -11,13 +11,21 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>
             {
+                let currButtons = [];
                 document.getElementById("submit").addEventListener("click",Click);
 
                 function Click(e){
                   let string=document.getElementById("text").value;
-                  let words=string.split(" ");
-                  for(var i=0;i<words.length;i++){
-                    makeButton(words[i]);
+                  if(string.trim() != "") {
+                    let words=string.split(" ");
+                    for (var i = 0; i < currButtons.length; i++) {
+                      currButtons[i].remove();
+                    }
+                    currButtons = [];
+                    for(var i=0;i<words.length;i++){
+                      let nextButton = makeButton(words[i]);
+                      currButtons.push(nextButton);
+                    }
                   }
                 }
 
@@ -40,6 +48,7 @@
                   newButton.innerHTML = word;
                   newButton.text = word;
                   newButton.onclick = makeCall;
+                  return newButton;
                 }
 
                 function makeCall(event) {
