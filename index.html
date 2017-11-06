@@ -22,14 +22,16 @@
                 function Click(e){
                   let string=document.getElementById("text").value;
                   if(string.trim() != "") {
-                    let words=string.split(" ");
+                    let words=string.split(/(\s+)/);
                     for (var i = 0; i < currButtons.length; i++) {
                       currButtons[i].remove();
                     }
                     currButtons = [];
                     for(var i=0;i<words.length;i++){
-                      let nextButton = makeButton(words[i]);
-                      currButtons.push(nextButton);
+                      if(!words[i].includes(" ") && !words[i].includes("\n") && !words[i].includes("\t")) {
+                        let nextButton = makeButton(words[i]);
+                        currButtons.push(nextButton);
+                      }
                     }
                   }
                 }
