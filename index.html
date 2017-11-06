@@ -43,8 +43,14 @@
                   else if (e.verb != undefined && e.verb.syn != undefined) {
                     newWord = e.verb.syn[Math.floor(Math.random()*e.verb.syn.length)];
                   }
+                  else if (e.adverb != undefined && e.adverb.syn != undefined) {
+                    newWord = e.adverb.syn[Math.floor(Math.random()*e.adverb.syn.length)];
+                  }
 
-                  button.innerHTML = newWord;
+                  if(newWord != undefined) {
+                    button.innerHTML = newWord;
+                  }
+
                 }
 
                 function makeButton(word) {
