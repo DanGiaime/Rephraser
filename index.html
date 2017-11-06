@@ -3,6 +3,7 @@
         <link  rel="stylesheet" href="theme.css">
     </head>
     <body>
+        <h1>Rephraser - By: Matthew "The Hammer" O'Herren, &nbsp;Daniel "Dan" Giaime</h1>
         <textarea type="text" id="text"></textarea>
         <input type="submit" value="Submit" id="submit">
 
@@ -52,17 +53,17 @@
                 }
 
                 function makeCall(event) {
-                  let jdata = $.ajax({
-                    dataType:"json",
-                    url: 'http://words.bighugelabs.com/api/2/0083cd9564ee4a75c43de2d4689b0bc1/'+this.text+'/json',
-                    data: null,
-                    success: function(e) {
-                      jsonLoaded(event.target, e);
-                    },
-                    error: function(e) {
-                      alert("No replacements found! Sorry!");
-                    }
-                  });
+                    let jdata = $.ajax({
+                      dataType:"json",
+                      url: 'http://words.bighugelabs.com/api/2/0083cd9564ee4a75c43de2d4689b0bc1/'+this.text+'/json',
+                      data: null,
+                      success: function(e) {
+                        jsonLoaded(event.target, e);
+                      },
+                      error: function(e) {
+                        alert("No replacements found! Sorry!");
+                      }
+                    });
                 }
             }
         </script>
