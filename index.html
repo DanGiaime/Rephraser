@@ -18,12 +18,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>
             {
-                let actualAlert = window.alert;
                 let currButtons = [];
-                document.getElementById("submit").addEventListener("click",Click);
+                document.getElementById("submit").addEventListener("click",submit);
                 document.getElementById("submitAll").addEventListener("click",submitAll);
 
-                function Click(e){
+                /// Submit Button Click functionality
+                function submit(e){
                   let string=document.getElementById("text").value;
                   if(string.trim() != "") {
                     let words=string.split(/(\s+)/);
@@ -40,6 +40,7 @@
                   }
                 }
 
+                /// Picks the first available part of speech, and grabs a synonym from it
                 function jsonLoaded(button, e){
                   let newWord = undefined;
 
@@ -59,10 +60,12 @@
 
                 }
 
+                /// Gets a random element from the given array and returns it
                 function getRandomElement(arr) {
                   return arr[Math.floor(Math.random()*arr.length)];
                 }
 
+                /// Constructs a new button with the given word and returns it
                 function makeButton(word) {
                   let newButton = document.createElement("button");
                   document.getElementById("buttonBox").appendChild(newButton);
@@ -72,6 +75,7 @@
                   return newButton;
                 }
 
+                /// Makes API call to get synonyms
                 function makeCall(event) {
                     let jdata = $.ajax({
                       dataType:"json",
@@ -87,12 +91,11 @@
                     });
                 }
 
+                /// Replaces every word with a synonym
                 function submitAll() {
-                  window.alert = function () {};
                   for (button of currButtons) {
                     button.click();
                   }
-                  window.alert = actualAlert;
                 }
 
             }
