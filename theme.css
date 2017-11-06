@@ -26,6 +26,10 @@ body {
     border-width: 2px;
 }
 
+textarea {
+    resize: none;
+}
+
 #text {
     margin-bottom: 2.5%;
     min-height:4em;
