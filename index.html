@@ -40,19 +40,23 @@
                   let newWord = undefined;
 
                   if(e.noun != undefined && e.noun.syn != undefined) {
-                    newWord = e.noun.syn[Math.floor(Math.random()*e.noun.syn.length)];
+                    newWord = getRandomElement(e.noun.syn);
                   }
                   else if (e.verb != undefined && e.verb.syn != undefined) {
-                    newWord = e.verb.syn[Math.floor(Math.random()*e.verb.syn.length)];
+                    newWord = getRandomElement(e.verb.syn);
                   }
                   else if (e.adverb != undefined && e.adverb.syn != undefined) {
-                    newWord = e.adverb.syn[Math.floor(Math.random()*e.adverb.syn.length)];
+                    newWord = getRandomElement(e.adverb.syn);
                   }
 
                   if(newWord != undefined) {
                     button.innerHTML = newWord;
                   }
 
+                }
+
+                function getRandomElement(arr) {
+                  return arr[Math.floor(Math.random()*arr.length)];
                 }
 
                 function makeButton(word) {
