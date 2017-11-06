@@ -7,8 +7,10 @@
         <div id="top">
           <h2>Enter you sentence here! </h2>
           <textarea type="text" id="text"></textarea>
-          <input type="submit" value="Submit" id="submit">
-          <input type="submit" value="SubmitAll" id="submitAll">
+        </div>
+        <div id="top2">
+          <input type="submit" value="Submit Words" id="submit">
+          <input type="submit" value="Rephrase All" id="submitAll">
         </div>
 
         <h2>Click your words to find synonyms!</h2>
@@ -52,6 +54,9 @@
                   }
                   else if (e.adverb != undefined && e.adverb.syn != undefined) {
                     newWord = getRandomElement(e.adverb.syn);
+                  }
+                  else if (e.adjective != undefined && e.adjective.sim != undefined) {
+                    newWord = getRandomElement(e.adjective.sim);
                   }
 
                   if(newWord != undefined) {

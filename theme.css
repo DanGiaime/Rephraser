@@ -2,6 +2,10 @@ html {
      background-color:#36486b;
 }
 
+#error {
+  color: red;
+}
+
 body {
     background-color: #4040a1;
     text-align: center;
@@ -17,7 +21,7 @@ body {
 #buttonBox{
     background-color: #fefbd8;
     min-width: 50%;
-    min-height: 20%;
+    min-height: 15%;
     font-size: 3em;
     padding: 5%;
     text-align: center;
@@ -29,7 +33,6 @@ body {
 
 textarea {
     resize: none;
-    float: left;
     font-size: 2em;
 }
 
@@ -38,18 +41,19 @@ textarea {
   min-width: 50%;
   text-align: center;
 }
+#top2 {
+  display: inline-block;
+  min-width: 50%;
+  text-align: center;
+  font-size: 2em;
+}
 
 #text {
     margin-bottom: 2.5%;
     min-height:4em;
 }
 
-#submit {
-    position: relative;
-    margin-top: 0.5em;
-    font-size: 1em;
-    display: block;
-}
+
 
 button {
     font-size: 0.75em;
@@ -76,9 +80,4 @@ h2{
 h1{
     height:10%;
     font-size:3em;
-}
-
-#submitAll {
-    display: block;
-    /*font-size: 1em;*/
 }
