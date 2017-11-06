@@ -16,40 +16,48 @@
         <script>
             {
                 document.getElementById("submit").addEventListener("click",Click);
-                var newString="";
-                var words = [];
 
                 function Click(e){
-                    var string=document.getElementById("text").value;
-                    words=string.split(" ");
-
-                    newString="";
-
-                    for(var i=0;i<words.length;i++){
-
-                        var j=$.ajax({
-                            dataType:"json",
-                            url: 'http://words.bighugelabs.com/api/2/0083cd9564ee4a75c43de2d4689b0bc1/'+words[i]+'/json',
-                            data: null,
-                            success:jsonLoaded
-                        });
-
-                    }
-
+                  let string=document.getElementById("text").value;
+                  let words=string.split(" ");
+                  for(var i=0;i<words.length;i++){
+                    makeButton(words[i]);
+                  }
                 }
 
-                function jsonLoaded(e){
+                function jsonLoaded(button, e){
+                  let newWord = undefined;
 
-                    debugger;
+                  if(e.noun != undefined && e.noun.syn != undefined) {
+                    newWord = e.noun.syn[Math.floor(Math.random()*e.noun.syn.length)];
+                  }
+                  else if (e.verb != undefined && e.verb.syn != undefined) {
+                    newWord = e.verb.syn[Math.floor(Math.random()*e.verb.syn.length)];
+                  }
 
-                    if(e.noun.syn != undefined) {
-                      for (let i = 0; i < e.noun.syn.length; i++) {
-                        newString += e.noun.syn[i] + " ";
-                      }
+                  button.innerHTML = newWord;
+                }
+
+                function makeButton(word) {
+                  let newButton = document.createElement("button");
+                  document.getElementById("para").appendChild(newButton);
+                  newButton.innerHTML = word;
+                  newButton.text = word;
+                  newButton.onclick = makeCall;
+                }
+
+                function makeCall(event) {
+                  let jdata = $.ajax({
+                    dataType:"json",
+                    url: 'http://words.bighugelabs.com/api/2/0083cd9564ee4a75c43de2d4689b0bc1/'+this.text+'/json',
+                    data: null,
+                    success: function(e) {
+                      jsonLoaded(event.target, e);
+                    },
+                    error: function(e) {
+                      alert("No replacements found! Sorry!");
                     }
-
-                    document.getElementById("para").innerHTML = newString;
-
+                  });
                 }
             }
         </script>
