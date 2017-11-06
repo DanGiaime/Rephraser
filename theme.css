@@ -1,12 +1,13 @@
 html {
-     background-color:#4040a1;
+     background-color:#36486b;
 }
 
 body {
-    background-color: #36486b;
+    background-color: #4040a1;
     text-align: center;
     padding:7.5%;
     padding-top: 2.5%;
+    padding-bottom: 2.5%;
     border-style: solid;
     border-color: black;
     border-width: 2px;
@@ -16,7 +17,7 @@ body {
 #buttonBox{
     background-color: #fefbd8;
     min-width: 50%;
-    min-height: 1em;
+    min-height: 45%;
     font-size: 3em;
     padding: 5%;
     text-align: center;
@@ -29,6 +30,7 @@ body {
 textarea {
     resize: none;
     float: left;
+    font-size: 2em;
 }
 
 #top {
@@ -42,7 +44,8 @@ textarea {
 
 #submit {
     position: relative;
-    margin-top: 1em;
+    margin-top: 0.5em;
+    font-size: 2em;
 }
 
 button {
@@ -59,4 +62,12 @@ input {
     background-color: #618685;
     margin: 2px;
     border-color:black;
+}
+
+h2{
+    height: 5%;
+}
+
+h1{
+    height:10%
 }
