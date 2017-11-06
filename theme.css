@@ -17,7 +17,7 @@ body {
 #buttonBox{
     background-color: #fefbd8;
     min-width: 50%;
-    min-height: 45%;
+    min-height: 30%;
     font-size: 3em;
     padding: 5%;
     text-align: center;
@@ -45,7 +45,7 @@ textarea {
 #submit {
     position: relative;
     margin-top: 0.5em;
-    font-size: 2em;
+    font-size: 1em;
 }
 
 button {
@@ -66,8 +66,10 @@ input {
 
 h2{
     height: 5%;
+    font-size: 2em;
 }
 
 h1{
-    height:10%
+    height:10%;
+    font-size:3em;
 }
