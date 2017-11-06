@@ -12,13 +12,16 @@
         </div>
 
         <h2>Click your words to find synonyms!</h2>
+        <p id="error"></p>
         <div id="buttonBox"></div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>
             {
+                let actualAlert = window.alert;
                 let currButtons = [];
                 document.getElementById("submit").addEventListener("click",Click);
+                document.getElementById("submitAll").addEventListener("click",submitAll);
 
                 function Click(e){
                   let string=document.getElementById("text").value;
@@ -76,12 +79,22 @@
                       data: null,
                       success: function(e) {
                         jsonLoaded(event.target, e);
+                        document.getElementById("error").innerHTML = "";
                       },
                       error: function(e) {
-                        alert("No replacements found! Sorry!");
+                        document.getElementById("error").innerHTML = "No replacements found! Sorry!";
                       }
                     });
                 }
+
+                function submitAll() {
+                  window.alert = function () {};
+                  for (button of currButtons) {
+                    button.click();
+                  }
+                  window.alert = actualAlert;
+                }
+
             }
         </script>
 
